@@ -7,8 +7,11 @@ const time = 'esti';
 const gate = 'gate';
 const remark = 'status';
 
-data.map(e => {
-  
+const sortedData = [...data].sort((a, b) =>
+  Date.parse(a[time]) < Date.parse(b[time]) ? -1 : (Date.parse(a[time]) > Date.parse(b[time]) ? 1 : 0));
+
+
+sortedData.map(e => {
   const row = document.createElement('tr');
 
   const terminalTd = document.createElement('td');
@@ -18,6 +21,8 @@ data.map(e => {
   const gateTd = document.createElement('td');
   const remarkTd = document.createElement('td');
   let timeValue;
+
+  // console.log(e[time]);
 
   if (e[time]) {
     const hours = new Date(Date.parse(e[time])).getHours();
@@ -30,7 +35,7 @@ data.map(e => {
     timeValue = '-';
   };
 
-  console.log(timeValue);
+  // console.log(timeValue);
 
   terminalTd.appendChild(document.createTextNode(e[terminal] ? e[terminal] : '-'));
   flightTd.appendChild(document.createTextNode(e[flight] ? e[flight] : '-'));
