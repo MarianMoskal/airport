@@ -1,4 +1,6 @@
 const body = document.querySelector('tbody');
+const terminalCell = document.getElementsByClassName('th terminal')[0];
+const screenWidth = screen.width;
 
 const terminal = 'terminal';
 const flight = 'fnr';
@@ -7,6 +9,8 @@ const time = 'esti';
 const gate = 'gate';
 const remark = 'status';
 const name = 'alname';
+
+screenWidth < 250 ? terminalCell.innerHTML = 'Ter' : terminalCell.innerHTML ='Terminal';
 
 const filteredData = data.filter(i => !i[name].includes('copy'));
 
@@ -36,14 +40,22 @@ sortedData.map(e => {
   };
 
   terminalTd.appendChild(document.createTextNode(e[terminal] ? e[terminal] : '-'));
+
   flightTd.appendChild(document.createTextNode(e[flight] ? e[flight] : '-'));
   flightTd.classList.add('flight-cell');
+
   destinationTd.appendChild(document.createTextNode(e[destination] ? e[destination] : '-'));
   destinationTd.classList.add('destination-cell');
+  destinationTd.classList.add('hidden-medium-screen')
+
   timeTd.appendChild(document.createTextNode(timeValue));
+
   gateTd.appendChild(document.createTextNode(e[gate] ? e[gate] : '-'));
+
   remarkTd.appendChild(document.createTextNode(e[remark] ? e[remark] : '-'));
   remarkTd.classList.add('remark-cell');
+  remarkTd.classList.add('hidden-small-screen')
+
   if (remarkTd.innerText === 'Boarding' || remarkTd.innerText === 'baggage delivery') {
     remarkTd.classList.add('remark-yellow')
   }

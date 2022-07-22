@@ -3,11 +3,11 @@ body{
 }
 
 .table{
- background-color: dimgrey;
- text-align: center;
-border-spacing: initial;
-color: white;
-width: 100%;
+  background-color: dimgrey;
+  text-align: center;
+  border-spacing: initial;
+  color: white;
+  width: 100%;
 }
 
 tr:nth-child(odd) {
@@ -41,6 +41,26 @@ tr{
 .remark-cell {
   text-align: start;
   padding-left: 50px;
+}
+
+@media(max-width: 650px) {
+  .remark-cell {
+      padding-left: 10px;
+    }
+
+  .hidden-medium-screen{
+      display: none;
+    }
+}
+
+@media(max-width: 450px){
+  .hidden-small-screen{
+    display: none;
+  }
+  .th{
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .remark-red{
